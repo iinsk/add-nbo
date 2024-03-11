@@ -1,12 +1,13 @@
-TARGET=byte-order-test
-CXXFLAGS=-g
+CC=gcc
+TARGET=add-nbo
+OBJECTS=add-nbo.o
 
 all: $(TARGET)
 
-$(TARGET): main.o
-        $(LINK.cpp) $^ $(LOADLIBES) $(LDLIBS) -o $@
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-        rm -f $(TARGET)
-        rm -f *.o
+	rm -f $(OBJECTS) $(TARGET)
 
+.PHONY: all clean
